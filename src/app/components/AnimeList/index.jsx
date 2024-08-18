@@ -1,17 +1,19 @@
 import Image from "next/image";
+import Link from "next/link";
 
-const AnimeList = () => {
+const AnimeList = ({ title, image, id }) => {
   return (
-    <div className="grid grid-cols-3 gap-4">
-      <div className="bg-indigo-500">
+    <div className="w-[300px] h-full bg-slate-700 p-4 rounded-md group hover:scale-105 transition-all ease-in-out">
+      <Link href={`/detail/${id}`}>
         <Image
-          src="https://placehold.co/600x400/png"
+          src={image}
           alt="..."
-          width={600}
-          height={400}
+          width={300}
+          height={350}
+          className="rounded-md cursor-pointer group-hover:scale-105 group-hover:opacity-70 transition-all ease-in-out"
         />
-        <h3>Judul Anime-nya di sini</h3>
-      </div>
+      </Link>
+      <h3 className="text-slate-300 font-bold text-center p-4">{title}</h3>
     </div>
   );
 };
