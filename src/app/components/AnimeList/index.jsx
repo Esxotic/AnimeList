@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const AnimeList = ({ title, image, id }) => {
   return (
-    <div className="w-[300px] h-full bg-slate-700 p-4 rounded-md group hover:scale-105 transition-all ease-in-out">
+    <div className="max-w-44 h-full bg-slate-700 p-4 rounded-md group hover:scale-105 transition-all ease-in-out md:max-w-full">
       <Link href={`/detail/${id}`}>
         <Image
           src={image}

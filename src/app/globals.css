@@ -3,5 +3,9 @@
 @tailwind utilities;
 
 body {
-  @apply bg-slate-400;
+  @apply bg-slate-400 mb-96;
+}
+
+img {
+  @apply max-w-36 md:max-w-72;
 }
