@@ -2,10 +2,10 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <div className="flex flex-col gap-2 p-4 bg-slate-600 md:flex md:flex-row md:justify-between">
+    <div className="flex flex-col gap-2 p-4 bg-primary md:flex md:flex-row md:justify-between">
       <Link
         href="/"
-        className="text-xl md:text-2xl font-extrabold uppercase hover:text-white transition-all ease-in-out"
+        className="text-xl md:text-2xl font-extrabold uppercase text-secondary hover:text-textPrimary transition-all ease-in-out"
       >
         AnimeMax
       </Link>
