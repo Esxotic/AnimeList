@@ -11,8 +11,8 @@ const InputSearch = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    if (!searchRef.current.value) {
-      return router.push("/");
+    if (searchRef.current.value.trim() === "") {
+      return false;
     } else {
       router.push(`/search/${searchRef.current.value}`);
     }

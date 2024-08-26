@@ -1,5 +1,3 @@
-"use client";
-
 import { getAnime } from "@/services/fetch";
 import AnimeList from "@/components/AnimeList";
 import HeaderAnimeList from "@/components/AnimeList/Header";
@@ -10,7 +8,9 @@ export default async function Page({ params }) {
 
   return (
     <section id="search">
-      <HeaderAnimeList title={`Hasil pencarian : ${keyword}`} />
+      <HeaderAnimeList
+        title={`Hasil pencarian : ${decodeURIComponent(keyword)}`}
+      />
       <AnimeList api={data} />
     </section>
   );
