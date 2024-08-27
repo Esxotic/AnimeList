@@ -9,7 +9,7 @@ export default async function Page() {
     <section id="populer">
       <HeaderAnimeList
         title={"anime populer"}
-        linkHref={"/"}
+        linkHref={"/populer"}
         linkText={"Lihat semua"}
       />
       <AnimeList api={data} />
