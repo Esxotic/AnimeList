@@ -5,7 +5,7 @@ const AnimeList = ({ api }) => {
   // console.log(api);
   return (
     <div className="grid grid-cols-2 gap-4 justify-items-center px-4 md:grid-cols-6 md:gap-y-8">
-      {api.map((anime) => {
+      {api?.map((anime) => {
         return (
           <div className="" key={anime.mal_id}>
             <div className="max-w-44 h-full bg-primary p-4 rounded-md group hover:scale-105 transition-all ease-in-out md:max-w-full">
