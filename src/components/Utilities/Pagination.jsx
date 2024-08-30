@@ -1,15 +1,19 @@
 import { usePaginationStore } from "@/services/store";
+import { useRouter } from "next/navigation";
 
 const Pagination = () => {
-  const { Page, setPage, TotalPage } = usePaginationStore();
+  let { Page, setPage, TotalPage } = usePaginationStore();
+  const router = useRouter();
 
   const handleNextPage = () => {
     Page === TotalPage ? false : setPage(Page + 1);
+    router.push(`?page=${Page + 1}`, undefined, { shallow: true });
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handlePrevPage = () => {
     Page === 1 ? false : setPage(Page - 1);
+    router.push(`?page=${Page - 1}`, undefined, { shallow: true });
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 

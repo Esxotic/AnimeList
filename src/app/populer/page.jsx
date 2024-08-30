@@ -11,10 +11,10 @@ import { useRouter, useSearchParams } from "next/navigation";
 const Page = () => {
   const router = useRouter();
   const [Data, setData] = useState([]);
-  const { Page, setPage, setTotalPage } = usePaginationStore();
+  let { Page, setPage, setTotalPage } = usePaginationStore();
   const searchParams = useSearchParams();
 
-  const queryPage = Number(searchParams.get("page")) || 1;
+  Page = Number(searchParams.get("page")) || 1;
 
   const fetchData = async () => {
     const response = await getAnime(`top/anime?page=${Page}`);
@@ -27,6 +27,7 @@ const Page = () => {
   useEffect(() => {
     fetchData();
     router.push(`?page=${Page}`, undefined, { shallow: true });
+    setPage(Page);
   }, [Page]);
 
   return (
