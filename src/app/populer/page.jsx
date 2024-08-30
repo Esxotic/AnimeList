@@ -11,7 +11,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 const Page = () => {
   const router = useRouter();
   const [Data, setData] = useState([]);
-  let { Page, setPage, setTotalPage } = usePaginationStore();
+  let { Page, setPage, TotalPage, setTotalPage } = usePaginationStore();
   const searchParams = useSearchParams();
 
   Page = Number(searchParams.get("page")) || 1;
@@ -33,7 +33,11 @@ const Page = () => {
   return (
     <>
       <Header title={`Anime Populer #${Page}`} />
-      <AnimeList api={Data} />
+      {Page <= TotalPage ? (
+        <AnimeList api={Data} />
+      ) : (
+        <p className="text-center text-textPrimary text-xl">Data Tidak Ada!</p>
+      )}
       <Pagination />
     </>
   );

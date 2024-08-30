@@ -19,7 +19,7 @@ const Pagination = () => {
 
   return (
     <div className="flex gap-4 my-6 justify-center items-center">
-      {Page === 1 ? null : (
+      {Page === 1 || Page < 1 ? null : (
         <button
           className="bg-primary py-2 px-3 text-textPrimary rounded-md font-semibold hover:opacity-70 transition-all"
           onClick={handlePrevPage}
@@ -30,7 +30,7 @@ const Pagination = () => {
       <p className="text-textPrimary">
         {Page} of {TotalPage}
       </p>
-      {Page === TotalPage ? null : (
+      {Page === TotalPage || Page >= TotalPage ? null : (
         <button
           className="bg-primary py-2 px-3 text-textPrimary rounded-md font-semibold hover:opacity-70 transition-all"
           onClick={handleNextPage}
