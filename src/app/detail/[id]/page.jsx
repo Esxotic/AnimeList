@@ -1,18 +1,16 @@
 import ReadMoreButton from "@/components/Utilities/ReadMore";
+import VideoPlayer from "@/components/Utilities/VIdeoPlayer";
 import { getAnime } from "@/services/fetch";
 import Image from "next/image";
 
 const Page = async ({ params: { id } }) => {
   const { data } = await getAnime(`anime/${id}`);
-  console.log(data);
-
-  //   TODO: atur responsive desktop dan buat youtube player di luar page ini
 
   return (
-    <div className="max-w-sm bg-primary mt-4 rounded-md p-4 mx-auto mb-10">
+    <div className="max-w-sm bg-primary mt-4 rounded-md p-4 mx-auto mb-10 md:max-w-6xl">
       <div className=" flex flex-col items-center">
         <h1 className="text-2xl text-center font-bold text-textPrimary mb-1">
-          {data.title}
+          {data.title} - {data.year}
         </h1>
         <div className="max-w-full flex text-nowrap overflow-auto text-center">
           <h3 className="text-textSecondary font-semibold border border-secondary px-2 mb-2 text-xs">
@@ -45,6 +43,7 @@ const Page = async ({ params: { id } }) => {
         <h1 className="text-textSecondary font-semibold">Sinopsis:</h1>
         <ReadMoreButton synopsis={data.synopsis} />
       </div>
+      <VideoPlayer id={data.trailer.youtube_id} />
     </div>
   );
 };
