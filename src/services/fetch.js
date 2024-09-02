@@ -4,3 +4,8 @@ export const getAnime = async (request) => {
   );
   return await response.json();
 };
+
+export const getNestedAnime = async (request) => {
+  const response = await getAnime(request);
+  return response.data.flatMap((item) => item.entry);
+};
