@@ -1,15 +1,16 @@
-import { getAnime, getNestedAnime } from "@/services/fetch";
+import { getAnime, getNestedAnime, reproduce } from "@/services/fetch";
 import AnimeList from "@/components/AnimeList";
 import HeaderAnimeList from "@/components/AnimeList/Header";
 
 export default async function Page() {
   const { data } = await getAnime("top/anime?limit=12");
-  const recomendedAnime = await getNestedAnime("recommendations/anime");
+  let recomendedAnime = await getNestedAnime("recommendations/anime", "entry");
 
-  let InitialIndex = Math.floor(Math.random() * recomendedAnime.length) - 12;
-  let firstIndex;
+  recomendedAnime = reproduce(recomendedAnime, 12);
 
-  InitialIndex < 12 ? (firstIndex = 0) : (firstIndex = InitialIndex);
+  // ! versi jerman
+  // let InitialIndex = Math.floor(Math.random() * recomendedAnime.length);
+  // let firstIndex = InitialIndex < 0 ? 0 : InitialIndex - 12;
 
   return (
     <>
@@ -24,7 +25,8 @@ export default async function Page() {
 
       <section id="recomended" className="mt-10">
         <HeaderAnimeList title={"anime rekomendasi"} />
-        <AnimeList api={recomendedAnime.slice(firstIndex, firstIndex + 12)} />
+        <AnimeList api={recomendedAnime} />
+        {/* <AnimeList api={recomendedAnime.slice(firstIndex, firstIndex + 12)} /> */}
       </section>
     </>
   );
