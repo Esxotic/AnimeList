@@ -19,7 +19,7 @@ const InputSearch = () => {
   };
 
   return (
-    <div className="">
+    <div className="relative">
       <form onSubmit={handleSearch}>
         <input
           type="search"
@@ -27,7 +27,7 @@ const InputSearch = () => {
           className="p-2 w-full rounded-md focus:outline-none focus:ring-red-700 focus:ring-2 focus:ring-offset-2 transition-all ease-in-out duration-200"
           ref={searchRef}
         />
-        <button className="absolute right-4 p-2" type="submit">
+        <button className="absolute right-0 p-2" type="submit">
           <MagnifyingGlass size={24} />
         </button>
       </form>
