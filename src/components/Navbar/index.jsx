@@ -10,12 +10,12 @@ const Navbar = async () => {
     <div className="flex flex-col gap-2 p-4 bg-primary md:flex md:flex-row md:justify-between md:items-center">
       <Link
         href="/"
-        className="text-xl md:text-2xl font-extrabold uppercase text-secondary hover:text-textPrimary transition-all ease-in-out"
+        className="text-xl md:text-2xl font-extrabold uppercase text-secondary hover:text-textPrimary md:mr-28 transition-all ease-in-out"
       >
         AnimeMax
       </Link>
       <InputSearch />
-      <div className="flex gap-4 items-center">
+      <div className="flex gap-4 items-center justify-between">
         {session?.user ? (
           <>
             <Link
@@ -28,7 +28,7 @@ const Navbar = async () => {
               src={session?.user?.image}
               width={50}
               height={50}
-              className="rounded-full w-10 h-10"
+              className="rounded-full w-10 h-10 hidden md:block"
             ></Image>
           </>
         ) : null}
