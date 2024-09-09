@@ -1,13 +1,12 @@
+import Header from "@/components/Dashboard/Header";
 import Image from "next/image";
 import Link from "next/link";
 
 const Page = () => {
   return (
     <section id="collection">
-      <h1 className="text-lg text-textPrimary font-bold text-center mt-2 capitalize">
-        My collection
-      </h1>
-      <div className="grid grid-cols-2 gap-4 justify-items-center px-4 mt-4 md:grid-cols-4">
+      <Header title={"My collection"} />
+      <div className="grid grid-cols-2 gap-4 justify-items-center px-4 mt-1 md:grid-cols-4">
         <Link href={"/"} className="border-2 border-primary w-fit">
           <Image
             src="https://picsum.photos/300/300"

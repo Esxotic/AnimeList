@@ -20,7 +20,7 @@ const Navbar = async () => {
           <>
             <Link
               href={"/user/dashboard"}
-              className="text-textPrimary hover:text-textSecondary transition-all ease-in-out"
+              className="text-textPrimary text-sm hover:text-textSecondary transition-all ease-in-out"
             >
               Dashboard
             </Link>
