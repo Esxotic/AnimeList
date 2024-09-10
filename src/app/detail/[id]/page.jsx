@@ -1,17 +1,21 @@
+import CollectionButton from "@/components/Utilities/CollectionButton";
 import ReadMoreButton from "@/components/Utilities/ReadMore";
 import VideoPlayer from "@/components/Utilities/VIdeoPlayer";
+import { auth } from "@/services/auth";
 import { getAnime } from "@/services/fetch";
 import Image from "next/image";
 
 const Page = async ({ params: { id } }) => {
   const { data } = await getAnime(`anime/${id}`);
+  const session = await auth();
 
   return (
     <div className="max-w-sm bg-primary mt-4 rounded-md p-4 mx-auto mb-10 md:max-w-6xl">
       <div className=" flex flex-col items-center">
         <h1 className="text-2xl text-center font-bold text-textPrimary mb-1">
-          {data.title} - {data.year}
+          {data?.title} - {data.year}
         </h1>
+        <CollectionButton anime_mal_id={id} user_email={session.user?.email} />
         <div className="max-w-full flex text-nowrap overflow-auto text-center">
           <h3 className="text-textSecondary font-semibold border border-secondary px-2 mb-2 text-xs">
             Rank: <br /> {data.rank}
