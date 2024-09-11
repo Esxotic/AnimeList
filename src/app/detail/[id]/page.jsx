@@ -3,11 +3,15 @@ import ReadMoreButton from "@/components/Utilities/ReadMore";
 import VideoPlayer from "@/components/Utilities/VIdeoPlayer";
 import { auth } from "@/services/auth";
 import { getAnime } from "@/services/fetch";
+import { prisma } from "@/services/prisma";
 import Image from "next/image";
 
 const Page = async ({ params: { id } }) => {
   const { data } = await getAnime(`anime/${id}`);
   const session = await auth();
+  const collection = await prisma.collection.findFirst({
+    where: { user_email: session?.user?.email, anime_mal_id: id },
+  });
 
   return (
     <div className="max-w-sm bg-primary mt-4 rounded-md p-4 mx-auto mb-10 md:max-w-6xl">
@@ -15,7 +19,12 @@ const Page = async ({ params: { id } }) => {
         <h1 className="text-2xl text-center font-bold text-textPrimary mb-1">
           {data?.title} - {data.year}
         </h1>
-        <CollectionButton anime_mal_id={id} user_email={session.user?.email} />
+        {!collection && session && (
+          <CollectionButton
+            anime_mal_id={id}
+            user_email={session.user?.email}
+          />
+        )}
         <div className="max-w-full flex text-nowrap overflow-auto text-center">
           <h3 className="text-textSecondary font-semibold border border-secondary px-2 mb-2 text-xs">
             Rank: <br /> {data.rank}
