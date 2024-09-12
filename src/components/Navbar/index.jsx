@@ -28,6 +28,7 @@ const Navbar = async () => {
               src={session?.user?.image}
               width={50}
               height={50}
+              alt="User Profile"
               className="rounded-full w-10 h-10 hidden md:block"
             ></Image>
           </>

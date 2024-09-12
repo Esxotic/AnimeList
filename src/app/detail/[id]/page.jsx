@@ -23,6 +23,8 @@ const Page = async ({ params: { id } }) => {
           <CollectionButton
             anime_mal_id={id}
             user_email={session.user?.email}
+            anime_image_url={data.images.webp.image_url}
+            anime_title={data.title}
           />
         )}
         <div className="max-w-full flex text-nowrap overflow-auto text-center">
