@@ -5,7 +5,7 @@ import { useState } from "react";
 import YouTube from "react-youtube";
 
 const VideoPlayer = ({ id }) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const options = {
     height: "150",
     width: "250",
@@ -17,7 +17,7 @@ const VideoPlayer = ({ id }) => {
 
   const Player = () => {
     return (
-      <div className="mt-2 flex flex-col items-end">
+      <div className="absolute mt-2 flex flex-col items-end bottom-10 right-5">
         <button className="text-textPrimary" onClick={handleClose}>
           <XCircle size={32} />
         </button>
@@ -34,9 +34,9 @@ const VideoPlayer = ({ id }) => {
 
   const ShowButton = () => {
     return (
-      <div className="w-full text-end">
+      <div className="w-fit absolute bottom-8 right-5">
         <button
-          className="text-xs text-textSecondary bg-secondary p-2 mt-2 rounded-md hover:opacity-70"
+          className="text-xs text-textSecondary bg-secondary p-2 rounded-md font-semibold md:text-sm hover:opacity-70"
           onClick={handleClose}
         >
           Lihat Trailer

@@ -1,3 +1,4 @@
+import CommentButton from "@/components/AnimeList/CommentButton";
 import CollectionButton from "@/components/Utilities/CollectionButton";
 import ReadMoreButton from "@/components/Utilities/ReadMore";
 import VideoPlayer from "@/components/Utilities/VIdeoPlayer";
@@ -14,7 +15,7 @@ const Page = async ({ params: { id } }) => {
   });
 
   return (
-    <div className="max-w-sm bg-primary mt-4 rounded-md p-4 mx-auto mb-10 md:max-w-6xl">
+    <div className="max-w-sm bg-primary mt-4 relative rounded-md p-4 mx-auto mb-10 md:max-w-6xl">
       <div className=" flex flex-col items-center">
         <h1 className="text-2xl text-center font-bold text-textPrimary mb-1">
           {data?.title} - {data.year}
@@ -57,6 +58,9 @@ const Page = async ({ params: { id } }) => {
       <div className=" text-sm mt-2">
         <h1 className="text-textSecondary font-semibold">Sinopsis:</h1>
         <ReadMoreButton synopsis={data.synopsis} />
+      </div>
+      <div className="flex flex-col gap-2 py-4">
+        <CommentButton />
       </div>
       <VideoPlayer id={data.trailer.youtube_id} />
     </div>
