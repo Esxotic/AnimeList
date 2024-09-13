@@ -60,7 +60,12 @@ const Page = async ({ params: { id } }) => {
         <ReadMoreButton synopsis={data.synopsis} />
       </div>
       <div className="flex flex-col gap-2 py-4">
-        <CommentButton />
+        <CommentButton
+          anime_mal_id={id}
+          user_email={session?.user?.email}
+          username={session?.user?.name}
+          anime_title={data.title}
+        />
       </div>
       <VideoPlayer id={data.trailer.youtube_id} />
     </div>

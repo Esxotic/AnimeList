@@ -24,9 +24,9 @@ const VideoPlayer = ({ id }) => {
         <YouTube
           videoId={id}
           opts={options}
-          style={{ width: "250px", height: "150px" }}
           onReady={(e) => e.target.pauseVideo()}
           onError={(e) => alert("video not found!")}
+          onPlay={(e) => e.target.setVolume(20)}
         />
       </div>
     );
