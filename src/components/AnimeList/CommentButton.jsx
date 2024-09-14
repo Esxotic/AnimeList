@@ -1,10 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import VideoPlayer from "../Utilities/VIdeoPlayer";
+import { useRouter } from "next/navigation";
 
-const CommentButton = ({ anime_mal_id, user_email, username, anime_title }) => {
+const CommentButton = ({
+  anime_mal_id,
+  user_email,
+  username,
+  anime_title,
+  video_id,
+}) => {
   const [comment, setComment] = useState("");
   const [isCreated, setIsCreated] = useState(false);
+  const router = useRouter();
 
   const handleInput = (e) => {
     setComment(e.target.value);
@@ -12,6 +21,10 @@ const CommentButton = ({ anime_mal_id, user_email, username, anime_title }) => {
 
   const handleComment = async (e) => {
     e.preventDefault();
+
+    if (comment.trim() === "") {
+      return false;
+    }
 
     const data = {
       anime_mal_id,
@@ -30,8 +43,10 @@ const CommentButton = ({ anime_mal_id, user_email, username, anime_title }) => {
 
     if (items.isCreated) {
       setComment("");
-      return setIsCreated(true);
+      setIsCreated(true);
+      router.refresh();
     }
+    return;
   };
 
   return (
@@ -53,6 +68,7 @@ const CommentButton = ({ anime_mal_id, user_email, username, anime_title }) => {
       >
         Posting
       </button>
+      <VideoPlayer id={video_id} />
     </>
   );
 };

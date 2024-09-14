@@ -1,4 +1,5 @@
 import CommentButton from "@/components/AnimeList/CommentButton";
+import CommentCard from "@/components/AnimeList/CommentCard";
 import CollectionButton from "@/components/Utilities/CollectionButton";
 import ReadMoreButton from "@/components/Utilities/ReadMore";
 import VideoPlayer from "@/components/Utilities/VIdeoPlayer";
@@ -55,19 +56,25 @@ const Page = async ({ params: { id } }) => {
           height={200}
         ></Image>
       </div>
-      <div className=" text-sm mt-2">
+      <div className=" text-sm my-2">
         <h1 className="text-textSecondary font-semibold">Sinopsis:</h1>
         <ReadMoreButton synopsis={data.synopsis} />
       </div>
-      <div className="flex flex-col gap-2 py-4">
-        <CommentButton
-          anime_mal_id={id}
-          user_email={session?.user?.email}
-          username={session?.user?.name}
-          anime_title={data.title}
-        />
+      <div className="flex flex-col gap-2">
+        {session && (
+          <>
+            <h1 className="text-textSecondary font-semibold">Komentar:</h1>
+            <CommentCard anime_mal_id={id} />
+            <CommentButton
+              anime_mal_id={id}
+              user_email={session?.user?.email}
+              username={session?.user?.name}
+              anime_title={data.title}
+              video_id={data.trailer.youtube_id}
+            />
+          </>
+        )}
       </div>
-      <VideoPlayer id={data.trailer.youtube_id} />
     </div>
   );
 };

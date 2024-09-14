@@ -27,7 +27,7 @@ model Comment {
   id              Int       @id @default(autoincrement())
   anime_mal_id    String    
   user_email      String
-  comment         String
+  comment         String    @db.Text
   username        String
   anime_title     String
 }

@@ -34,7 +34,7 @@ const VideoPlayer = ({ id }) => {
 
   const ShowButton = () => {
     return (
-      <div className="w-fit absolute bottom-8 right-5">
+      <div className="w-fit absolute bottom-4 right-5">
         <button
           className="text-xs text-textSecondary bg-secondary p-2 rounded-md font-semibold md:text-sm hover:opacity-70"
           onClick={handleClose}
