@@ -18,11 +18,11 @@ const CommentButton = ({
   const handleInput = (e) => {
     setComment(e.target.value);
   };
-
   const handleComment = async (e) => {
     e.preventDefault();
 
-    if (comment.trim() === "") {
+    if (comment.trim() === "" || comment.length < 3) {
+      alert("Komentar minimal 3 huruf dan tidak boleh kosong!");
       return false;
     }
 
@@ -58,7 +58,7 @@ const CommentButton = ({
         name="comment"
         id="comment"
         className="w-full h-16 rounded-sm text-primary text-xs p-2 focus:outline-none focus:ring-2 focus:ring-secondary transition-all md:h-32 md:text-sm"
-        placeholder="Tulis komentar anda di sini!"
+        placeholder="Tulis komentar anda di sini! (min.3 karakter)"
         onChange={handleInput}
         value={comment}
       />

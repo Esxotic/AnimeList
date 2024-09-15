@@ -61,18 +61,16 @@ const Page = async ({ params: { id } }) => {
         <ReadMoreButton synopsis={data.synopsis} />
       </div>
       <div className="flex flex-col gap-2">
+        <h1 className="text-textSecondary font-semibold">Komentar:</h1>
+        <CommentCard anime_mal_id={id} />
         {session && (
-          <>
-            <h1 className="text-textSecondary font-semibold">Komentar:</h1>
-            <CommentCard anime_mal_id={id} />
-            <CommentButton
-              anime_mal_id={id}
-              user_email={session?.user?.email}
-              username={session?.user?.name}
-              anime_title={data.title}
-              video_id={data.trailer.youtube_id}
-            />
-          </>
+          <CommentButton
+            anime_mal_id={id}
+            user_email={session?.user?.email}
+            username={session?.user?.name}
+            anime_title={data.title}
+            video_id={data.trailer.youtube_id}
+          />
         )}
       </div>
     </div>
