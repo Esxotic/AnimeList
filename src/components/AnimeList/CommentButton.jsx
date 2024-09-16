@@ -3,6 +3,7 @@
 import { useState } from "react";
 import VideoPlayer from "../Utilities/VIdeoPlayer";
 import { useRouter } from "next/navigation";
+import InputRating from "./InputRating";
 
 const CommentButton = ({
   anime_mal_id,
@@ -13,11 +14,14 @@ const CommentButton = ({
 }) => {
   const [comment, setComment] = useState("");
   const [isCreated, setIsCreated] = useState(false);
+  const [rating, setRating] = useState(0);
+
   const router = useRouter();
 
   const handleInput = (e) => {
     setComment(e.target.value);
   };
+
   const handleComment = async (e) => {
     e.preventDefault();
 
@@ -32,6 +36,7 @@ const CommentButton = ({
       comment,
       username,
       anime_title,
+      rating,
     };
 
     const response = await fetch("/api/v1/comment", {
@@ -62,6 +67,10 @@ const CommentButton = ({
         onChange={handleInput}
         value={comment}
       />
+      <div className="flex items-center gap-2 my-2">
+        <h1 className="text-textSecondary font-semibold">Rating:</h1>
+        <InputRating rating={rating} setRating={setRating} />
+      </div>
       <button
         className="bg-secondary text-textSecondary py-2 px-4 rounded-md w-fit text-xs font-semibold hover:opacity-70 transition-all ease-in-out md:text-sm"
         onClick={handleComment}

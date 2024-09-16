@@ -2,7 +2,6 @@ import CommentButton from "@/components/AnimeList/CommentButton";
 import CommentCard from "@/components/AnimeList/CommentCard";
 import CollectionButton from "@/components/Utilities/CollectionButton";
 import ReadMoreButton from "@/components/Utilities/ReadMore";
-import VideoPlayer from "@/components/Utilities/VIdeoPlayer";
 import { auth } from "@/services/auth";
 import { getAnime } from "@/services/fetch";
 import { prisma } from "@/services/prisma";
@@ -60,7 +59,7 @@ const Page = async ({ params: { id } }) => {
         <h1 className="text-textSecondary font-semibold">Sinopsis:</h1>
         <ReadMoreButton synopsis={data.synopsis} />
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-1 md:gap-2">
         <h1 className="text-textSecondary font-semibold">Komentar:</h1>
         <CommentCard anime_mal_id={id} />
         {session && (

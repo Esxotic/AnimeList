@@ -1,6 +1,7 @@
 import Header from "@/components/Dashboard/Header";
 import { auth } from "@/services/auth";
 import { prisma } from "@/services/prisma";
+import { Star } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -29,6 +30,11 @@ const page = async () => {
             <h1 className="text-textSecondary font-bold text-md md:text-lg">
               {item.username}
             </h1>
+            <div className="flex my-1">
+              {Array.from({ length: item.rating }, (_, index) => (
+                <Star key={index} size={12} color="#94a3b8" weight="fill" />
+              ))}
+            </div>
             <h2 className="text-secondary font-semibold text-xs md:text-sm">
               {item.anime_title}
             </h2>
