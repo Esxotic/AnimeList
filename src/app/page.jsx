@@ -6,7 +6,7 @@ export default async function Page() {
   const { data } = await getAnime("top/anime?limit=12");
   let recomendedAnime = await getNestedAnime("recommendations/anime", "entry");
 
-  recomendedAnime = reproduce(recomendedAnime, 12);
+  const ListRecomendedAnime = reproduce(recomendedAnime, 12);
 
   // ! versi jerman
   // let InitialIndex = Math.floor(Math.random() * recomendedAnime.length);
@@ -25,7 +25,7 @@ export default async function Page() {
 
       <section id="recomended" className="mt-10">
         <HeaderAnimeList title={"anime rekomendasi"} />
-        <AnimeList api={recomendedAnime} />
+        <AnimeList api={ListRecomendedAnime} />
         {/* <AnimeList api={recomendedAnime.slice(firstIndex, firstIndex + 12)} /> */}
       </section>
     </>
