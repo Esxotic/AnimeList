@@ -8,10 +8,6 @@ export default async function Page() {
 
   const ListRecomendedAnime = reproduce(recomendedAnime, 12);
 
-  // ! versi jerman
-  // let InitialIndex = Math.floor(Math.random() * recomendedAnime.length);
-  // let firstIndex = InitialIndex < 0 ? 0 : InitialIndex - 12;
-
   return (
     <>
       <section id="populer">
@@ -26,7 +22,6 @@ export default async function Page() {
       <section id="recomended" className="mt-10">
         <HeaderAnimeList title={"anime rekomendasi"} />
         <AnimeList api={ListRecomendedAnime} />
-        {/* <AnimeList api={recomendedAnime.slice(firstIndex, firstIndex + 12)} /> */}
       </section>
     </>
   );
